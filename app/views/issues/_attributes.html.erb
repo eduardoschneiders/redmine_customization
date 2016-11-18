@@ -28,6 +28,8 @@
             :tabindex => 200,
             :class => 'icon-only icon-add'
            ) if User.current.allowed_to?(:manage_categories, @issue.project) %></p>
+
+    <%= f.select :services_catalogues, ServicesCatalogue.all.map { |sc| [sc.role, sc.id] }%>
 <% end %>
 
 <% if @issue.safe_attribute?('fixed_version_id') && @issue.assignable_versions.any? %>
