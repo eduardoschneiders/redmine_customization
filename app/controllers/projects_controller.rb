@@ -67,6 +67,7 @@ class ProjectsController < ApplicationController
     @issue_custom_fields = IssueCustomField.sorted.to_a
     @trackers = Tracker.sorted.to_a
     @project = Project.new
+    require 'pry'; binding.pry
     @project.safe_attributes = params[:project]
 
     if @project.save

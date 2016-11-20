@@ -30,7 +30,13 @@
            ) if User.current.allowed_to?(:manage_categories, @issue.project) %></p>
 
 <% end %>
-    <%= f.select :catalogues, Catalogue.all.map { |sc| [sc.role, sc.id] }%>
+
+<% Catalogue.all.each do |catalogue| %>
+    <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), :id => nil %>
+    <%= catalogue.activity %><br />
+
+    <%#f.select :catalogue_ids, Catalogue.all.map { |sc| [sc.role, sc.id] }%>
+<% end %>
 
 <% if @issue.safe_attribute?('fixed_version_id') && @issue.assignable_versions.any? %>
 <p><%= f.select :fixed_version_id, version_options_for_select(@issue.assignable_versions, @issue.fixed_version), :include_blank => true, :required => @issue.required_attribute?('fixed_version_id') %>

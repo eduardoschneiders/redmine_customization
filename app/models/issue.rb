@@ -43,8 +43,9 @@ class Issue < ActiveRecord::Base
   has_many :relations_from, :class_name => 'IssueRelation', :foreign_key => 'issue_from_id', :dependent => :delete_all
   has_many :relations_to, :class_name => 'IssueRelation', :foreign_key => 'issue_to_id', :dependent => :delete_all
 
-  has_many :catalogues_issues
-  has_many :catalogues, through: :catalogues_issues
+  has_and_belongs_to_many :catalogues
+  # has_many :catalogues, through: :catalogues_issues
+  # accepts_nested_attributes_for :catalogues_issues
 
   acts_as_attachable :after_add => :attachment_added, :after_remove => :attachment_removed
   acts_as_customizable
@@ -435,6 +436,7 @@ class Issue < ActiveRecord::Base
 
   safe_attributes 'project_id',
     'tracker_id',
+    'catalogue_ids',
     'status_id',
     'category_id',
     'assigned_to_id',
