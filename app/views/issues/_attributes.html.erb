@@ -29,8 +29,8 @@
             :class => 'icon-only icon-add'
            ) if User.current.allowed_to?(:manage_categories, @issue.project) %></p>
 
-    <%= f.select :services_catalogues, ServicesCatalogue.all.map { |sc| [sc.role, sc.id] }%>
 <% end %>
+    <%= f.select :catalogues, Catalogue.all.map { |sc| [sc.role, sc.id] }%>
 
 <% if @issue.safe_attribute?('fixed_version_id') && @issue.assignable_versions.any? %>
 <p><%= f.select :fixed_version_id, version_options_for_select(@issue.assignable_versions, @issue.fixed_version), :include_blank => true, :required => @issue.required_attribute?('fixed_version_id') %>
