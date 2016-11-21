@@ -138,7 +138,7 @@ class IssuesController < ApplicationController
     end
     call_hook(:controller_issues_new_before_save, { :params => params, :issue => @issue })
     @issue.save_attachments(params[:attachments] || (params[:issue] && params[:issue][:uploads]))
-    require 'pry'; binding.pry
+
     if @issue.save
       call_hook(:controller_issues_new_after_save, { :params => params, :issue => @issue})
       respond_to do |format|
@@ -490,7 +490,7 @@ class IssuesController < ApplicationController
       # so we can use the default version for the new project
       attrs.delete(:fixed_version_id)
     end
-    require 'pry'; binding.pry
+
     @issue.safe_attributes = attrs
 
     if @issue.project

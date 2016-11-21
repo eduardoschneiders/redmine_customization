@@ -1,0 +1,13 @@
+<h1>Catalogo de serviços</h1>
+<%= link_to 'Novo', new_catalogue_path %>
+<ul>
+  <% @catalogues.each do |c| %>
+    <li>
+    <%= link_to 'Apagar', c, method: :delete, data: { confirm: 'Certeza?' } %>
+      <%= link_to 'Editar', edit_catalogue_path(c.id)%>
+      Role: <%= c.role %> -
+      Activity: <%= c.activity %> -
+      HST: <%= c.hst %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,6 @@
+<%= form_for @catalogue do |f| %>
+  Role: <%= f.text_field :role, value: @catalogue.role %><br />
+  Activity <%= f.text_field :activity, value: @catalogue.activity %><br />
+  Hst: <%= f.text_field :hst, value: @catalogue.hst %><br />
+  <%= f.submit 'Gravar' %>
+<% end %>
