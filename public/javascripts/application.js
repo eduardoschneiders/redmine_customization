@@ -781,8 +781,24 @@ function keepAnchorOnSignIn(form){
   return true;
 }
 
+function catalogue(){
+  var inputs = $('.teste').find('input[type="checkbox"]');
+
+  inputs.change(function(){
+    var tr = $(this).parent().parent()
+
+    if ($(this).prop('checked')){
+      tr.appendTo($('table#catalogue_current_itens'));
+    } else {
+      tr.appendTo($('table#catalogue_new_itens'));
+    }
+  });
+
+}
+
 $(document).ready(setupAjaxIndicator);
 $(document).ready(hideOnLoad);
 $(document).ready(addFormObserversForDoubleSubmit);
 $(document).ready(defaultFocus);
 $(document).ready(setupTabs);
+$(document).ready(catalogue);

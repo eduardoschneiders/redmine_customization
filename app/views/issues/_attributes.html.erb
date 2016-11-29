@@ -31,12 +31,7 @@
 
 <% end %>
 
-<% Catalogue.all.each do |catalogue| %>
-    <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), :id => nil %>
-    <%= catalogue.activity %><br />
 
-    <%#f.select :catalogue_ids, Catalogue.all.map { |sc| [sc.role, sc.id] }%>
-<% end %>
 
 <% if @issue.safe_attribute?('fixed_version_id') && @issue.assignable_versions.any? %>
 <p><%= f.select :fixed_version_id, version_options_for_select(@issue.assignable_versions, @issue.fixed_version), :include_blank => true, :required => @issue.required_attribute?('fixed_version_id') %>
@@ -80,6 +75,74 @@
 <p><%= f.select :done_ratio, ((0..10).to_a.collect {|r| ["#{r*10} %", r*10] }), :required => @issue.required_attribute?('done_ratio') %></p>
 <% end %>
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="teste">
+<h2>Catalogues: </h2>
+  <div class="catalogue_current_itens">
+
+    <table id="catalogue_current_itens">
+      <tr style="font-weight: bold">
+        <td> </td>
+        <td class="activity">Activity</td>
+        <td class="role">role</td>
+        <td class="hst">hst</td>
+      </tr>
+      <% @issue.catalogues.each do |catalogue| %>
+          <tr>
+            <td>
+              <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), id: "issue_catalogue_ids_#{catalogue.id}"%>
+            </td>
+            <td>
+              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.activity %></label>
+            </td>
+            <td>
+              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.role %></label>
+            </td>
+            <td>
+              <label for='<%="issue_catalogue_ids_#{catalogue.id}"%>'><%= catalogue.hst %></label>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+
+
+  <h4>Adicionar ao catalogo</h4>
+  <div class="catalogue_new_itens">
+    <table id="catalogue_new_itens">
+      <tr style="font-weight: bold">
+        <td> </td>
+        <td class="activity">Activity</td>
+        <td class="role">role</td>
+        <td class="hst">hst</td>
+      </tr>
+      <% (Catalogue.all - @issue.catalogues).each do |catalogue| %>
+          <tr>
+            <td>
+              <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), id: "issue_catalogue_ids_#{catalogue.id}"%>
+            </td>
+            <td>
+              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.activity %></label>
+            </td>
+            <td>
+              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.role %></label>
+            </td>
+            <td>
+              <label for='<%="issue_catalogue_ids_#{catalogue.id}"%>'><%= catalogue.hst %></label>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 
 <% if @issue.safe_attribute? 'custom_field_values' %>

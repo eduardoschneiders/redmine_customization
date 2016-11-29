@@ -1,13 +1,25 @@
 <h1>Catalogo de serviços</h1>
 <%= link_to 'Novo', new_catalogue_path %>
-<ul>
+
+<table>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Role</td>
+    <td>Activity</td>
+    <td>HST</td>
+  </tr>
   <% @catalogues.each do |c| %>
-    <li>
-    <%= link_to 'Apagar', c, method: :delete, data: { confirm: 'Certeza?' } %>
-      <%= link_to 'Editar', edit_catalogue_path(c.id)%>
-      Role: <%= c.role %> -
-      Activity: <%= c.activity %> -
-      HST: <%= c.hst %>
-    </li>
+    <tr>
+        <td>
+          <%= link_to 'Apagar', c, method: :delete, data: { confirm: 'Certeza?' } %>      
+        </td>
+        <td>
+          <%= link_to 'Editar', edit_catalogue_path(c.id)%>
+        </td>
+        <td><%= c.role %></td>
+        <td><%= c.activity %></td>
+        <td><%= c.hst %></td>
+    </tr>
   <% end %>
-</ul>
+</table>

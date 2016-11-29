@@ -1404,3 +1404,24 @@ color: #555; text-shadow: 1px 1px 0 #fff;
   height:1px;
   overflow:hidden;
 }
+
+.teste {
+  padding-left: 180px
+}
+
+.teste label {
+  width: auto;
+  margin-left: auto;
+  font-weight: normal;
+  text-align: left;
+}
+
+.teste .catalogue_current_itens, .teste .catalogue_new_itens {
+  height: 320px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.teste table td.activity  { width: 565px; }
+.teste table td.role      { width: 100px; }
+.teste table td.hst       { width: 20px; }
