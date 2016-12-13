@@ -1,6 +1,7 @@
 en:
   # Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
   direction: ltr
+  field_total_hst: Total de horas
   date:
     formats:
       # Use the strftime parameters for formats.

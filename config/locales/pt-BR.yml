@@ -1,5 +1,6 @@
 pt-BR:
   direction: ltr
+  field_total_hst: Total de horas
   date:
     formats:
       default: "%d/%m/%Y"

@@ -153,6 +153,10 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  def total_hst
+    catalogues.sum(&:hst)
+  end
+
   # Returns true if usr or current user is allowed to view the issue
   def visible?(usr=nil)
     (usr || User.current).allowed_to?(:view_issues, self.project) do |role, user|
