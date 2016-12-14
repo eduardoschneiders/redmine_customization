@@ -1,13 +1,13 @@
 <h1>Catalogo de serviços</h1>
-<%= link_to 'Novo', new_catalogue_path %>
+<%= link_to 'Novo', new_catalogue_path, class: 'icon icon-add' %>
 
-<table>
-  <tr>
-    <td></td>
-    <td></td>
-    <td>Role</td>
-    <td>Activity</td>
-    <td>HST</td>
+<table class="list">
+  <tr style="font-weight: bold">
+    <td width="20"></td>
+    <td width="20"></td>
+    <td width="300">Atividade</td>
+    <td width="250">Papel</td>
+    <td width="50">HST</td>
   </tr>
   <% @catalogues.each do |c| %>
     <tr>

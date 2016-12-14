@@ -1,6 +1,20 @@
 <%= form_for @catalogue do |f| %>
-  Role: <%= f.text_field :role, value: @catalogue.role %><br />
-  Activity <%= f.text_field :activity, value: @catalogue.activity %><br />
-  Hst: <%= f.text_field :hst, value: @catalogue.hst %><br />
-  <%= f.submit 'Gravar' %>
+  <table>
+    <tr>
+      <td><b>Atividade:</b></td>
+      <td><%= f.text_area :activity, value: @catalogue.activity, style: 'height: 100px' %></td>
+    </tr>
+    <tr>
+      <td><b>Papel:</b></td>
+      <td><%= f.text_area :role, value: @catalogue.role, style: 'height: 100px' %></td>
+    </tr>
+    <tr>
+      <td><b>HST:</b></td>
+      <td><%= f.text_field :hst, value: @catalogue.hst %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit 'Gravar' %></td>
+    </tr>
+  </table>
 <% end %>
