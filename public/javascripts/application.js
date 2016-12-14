@@ -796,9 +796,45 @@ function catalogue(){
 
 }
 
+function catalogue_filter(){
+  $('#catalogue_new_itens, #catalogue_current_itens').DataTable({
+    paging:   false,
+    info: false,
+    initComplete: function () {
+      // console.log(this.api().columns());
+      this.api().columns().every(function () {
+        var column = this;
+
+        if (this[0][0] != 0){
+          var select = $('<select><option value=""></option></select>')
+              .appendTo( $(column.footer()).empty() )
+              .on( 'change', function () {
+                var val = $.fn.dataTable.util.escapeRegex(
+                  $(this).val()
+                );
+
+              column
+                .search( val ? '^'+val+'$' : '', true, false )
+                .draw();
+              });
+
+              // console.log(column.data());
+          column.data().unique().sort().each( function ( d, j ) {
+            var text = /<label.*?>(.*)<\/label>/.exec(d)[1];
+            // console.log(d);
+            // console.log(text);
+            select.append( '<option value="'+text+'">'+text+'</option>' )
+          });
+        }
+      });
+    }
+  });
+}
+
 $(document).ready(setupAjaxIndicator);
 $(document).ready(hideOnLoad);
 $(document).ready(addFormObserversForDoubleSubmit);
 $(document).ready(defaultFocus);
 $(document).ready(setupTabs);
 $(document).ready(catalogue);
+$(document).ready(catalogue_filter);

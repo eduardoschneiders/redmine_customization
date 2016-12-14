@@ -1422,6 +1422,9 @@ color: #555; text-shadow: 1px 1px 0 #fff;
   overflow-y: scroll;
 }
 
-.teste table td.activity  { width: 565px; }
-.teste table td.role      { width: 100px; }
-.teste table td.hst       { width: 20px; }
+.teste table { width: 100%; }
+.teste table th select { width: 100%; }
+
+.teste table th.activity  { width: 565px; }
+.teste table th.role      { width: 100px; }
+.teste table th.hst       { width: 20px; }

@@ -90,28 +90,40 @@
   <div class="catalogue_current_itens">
 
     <table id="catalogue_current_itens">
-      <tr style="font-weight: bold">
-        <td> </td>
-        <td class="activity">Activity</td>
-        <td class="role">role</td>
-        <td class="hst">hst</td>
-      </tr>
-      <% @issue.catalogues.each do |catalogue| %>
-          <tr>
-            <td>
-              <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), id: "issue_catalogue_ids_#{catalogue.id}"%>
-            </td>
-            <td>
-              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.activity %></label>
-            </td>
-            <td>
-              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.role %></label>
-            </td>
-            <td>
-              <label for='<%="issue_catalogue_ids_#{catalogue.id}"%>'><%= catalogue.hst %></label>
-            </td>
-          </tr>
-      <% end %>
+      <thead>
+        <tr style="font-weight: bold">
+          <th> </th>
+          <th class="activity">Activity</th>
+          <th class="role">role</th>
+          <th class="hst">hst</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr style="font-weight: bold">
+          <th> </th>
+          <th>Activity</th>
+          <th>role</th>
+          <th>hst</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @issue.catalogues.each do |catalogue| %>
+            <tr>
+              <td>
+                <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), id: "issue_catalogue_ids_#{catalogue.id}"%>
+              </td>
+              <td>
+                <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.activity %></label>
+              </td>
+              <td>
+                <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.role %></label>
+              </td>
+              <td>
+                <label for='<%="issue_catalogue_ids_#{catalogue.id}"%>'><%= catalogue.hst %></label>
+              </td>
+            </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 
@@ -119,28 +131,40 @@
   <h4>Adicionar ao catalogo</h4>
   <div class="catalogue_new_itens">
     <table id="catalogue_new_itens">
-      <tr style="font-weight: bold">
-        <td> </td>
-        <td class="activity">Activity</td>
-        <td class="role">role</td>
-        <td class="hst">hst</td>
-      </tr>
-      <% (Catalogue.all - @issue.catalogues).each do |catalogue| %>
-          <tr>
-            <td>
-              <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), id: "issue_catalogue_ids_#{catalogue.id}"%>
-            </td>
-            <td>
-              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.activity %></label>
-            </td>
-            <td>
-              <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.role %></label>
-            </td>
-            <td>
-              <label for='<%="issue_catalogue_ids_#{catalogue.id}"%>'><%= catalogue.hst %></label>
-            </td>
-          </tr>
-      <% end %>
+      <thead>
+        <tr style="font-weight: bold">
+          <th> </th>
+          <th class="activity">Activity</th>
+          <th class="role">role</th>
+          <th class="hst">hst</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr style="font-weight: bold">
+          <th> </th>
+          <th>Activity</th>
+          <th>role</th>
+          <th>hst</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% (Catalogue.all - @issue.catalogues).each do |catalogue| %>
+            <tr>
+              <td>
+                <%= check_box_tag 'issue[catalogue_ids][]', catalogue.id, @issue.catalogues.to_a.include?(catalogue), id: "issue_catalogue_ids_#{catalogue.id}"%>
+              </td>
+              <td>
+                <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.activity %></label>
+              </td>
+              <td>
+                <label for="<%="issue_catalogue_ids_#{catalogue.id}"%>"><%= catalogue.role %></label>
+              </td>
+              <td>
+                <label for='<%="issue_catalogue_ids_#{catalogue.id}"%>'><%= catalogue.hst %></label>
+              </td>
+            </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

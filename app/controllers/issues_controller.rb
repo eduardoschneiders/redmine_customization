@@ -175,6 +175,7 @@ class IssuesController < ApplicationController
 
   def update
     return unless update_issue_from_params
+    @issue.catalogues.delete_all
     @issue.save_attachments(params[:attachments] || (params[:issue] && params[:issue][:uploads]))
     saved = false
     begin
